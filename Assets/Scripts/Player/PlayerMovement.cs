@@ -184,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
         // Shorten jump if you let go of jump button
         if (holdToJumpHigher)
         {
-            if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0)
+            if (Input.GetButtonUp("Jump") && rb.velocity.y > 0)
             {
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * shortenJumpPercentage);
             }
@@ -200,7 +200,7 @@ public class PlayerMovement : MonoBehaviour
             jumpIsBuffered = false;
     
         // Get Jump Input
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Jump"))
         {
             jumpIsBuffered = true;
             framesLeftForBufferedJump = inputBufferAmount;
@@ -227,7 +227,7 @@ public class PlayerMovement : MonoBehaviour
     private void ManageJumpingWithoutBuffering()
     {
         // Jumping
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Jump"))
         {
             // If using cayote time, see if time has ran out
             bool coyoteAllow = false;
