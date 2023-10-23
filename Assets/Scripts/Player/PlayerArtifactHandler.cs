@@ -17,6 +17,9 @@ public class PlayerArtifactHandler : MonoBehaviour
 
     private void Update()
     {
+        if (artifact == null)
+            return;
+
         PickupManager();
         CarryManager();
         ThrowManager();

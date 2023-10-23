@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Artifact : MonoBehaviour
 {
+    public int damage = 1;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public Collider2D col;
 
@@ -17,5 +18,13 @@ public class Artifact : MonoBehaviour
     {
         if(rb.velocity != Vector2.zero)
             transform.up = rb.velocity;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.TryGetComponent<IDamagable>(out IDamagable damagable))
+        {
+            damagable.TakeDamage(damage);
+        }
     }
 }
