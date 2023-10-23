@@ -38,15 +38,28 @@ public class PlayerArtifactHandler : MonoBehaviour
     {
         if(!isCarrying) return;
 
-        if (Input.GetButtonDown("Fire")) 
+        if (Input.GetButtonDown("Fire"))
+        {
+            Vector2 dir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+            dir.Normalize();
+
+            Throw(dir);
+        }
+        else if (Input.GetButtonDown("FireController"))
+        {
+            Vector2 dir = Vector2.zero;
+            dir.x = Input.GetAxis("HorAimController");
+            dir.y = Input.GetAxis("VerAimController");
+            Throw(dir);
+        }
+
+        void Throw(Vector2 direction)
         {
             pickUpTimer = pickUpCooldown;
             isCarrying = false;
             artifact.rb.gravityScale = 1;
-            Vector2 dir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
-            dir.Normalize();
-            artifact.transform.up = (Vector3)dir;
-            artifact.rb.velocity = dir * throwSpeed;
+            artifact.transform.up = (Vector3)direction;
+            artifact.rb.velocity = direction * throwSpeed;
         }
     }
 

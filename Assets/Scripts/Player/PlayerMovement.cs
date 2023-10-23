@@ -131,10 +131,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void HorizontalMovementManager()
     {
-        directionalInput.x = Input.GetAxisRaw("Horizontal");
+        // Prioritize controller input over keyboard
+        float controllerInput = Input.GetAxis("Hor");
+        float keyboardInput = Input.GetAxisRaw("Horizontal");
+        if (Mathf.Abs(controllerInput) > Mathf.Abs(keyboardInput))
+            directionalInput.x = controllerInput;
+        else
+            directionalInput.x = keyboardInput;
 
         // Apply movement
-        if(directionalInput.x != 0)
+        if (directionalInput.x != 0)
         {
 
             // Determine speed

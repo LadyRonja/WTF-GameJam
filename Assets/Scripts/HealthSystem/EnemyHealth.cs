@@ -17,6 +17,6 @@ public class EnemyHealth : Health
         // Play death animation
         // yield return new WaitForSeconds(/*death animation time*/);
         base.Die();
-        return null;
+        yield return null;
     }
 }
