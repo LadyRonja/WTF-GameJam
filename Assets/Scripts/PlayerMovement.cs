@@ -55,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
     PhysicsMaterial2D physicsMaterial;
 
     bool grounded = false;
-    bool onSlope = false;
     float currentSpeedGround = 0f;
     float currentSpeedAir = 0f;
 
@@ -64,9 +63,6 @@ public class PlayerMovement : MonoBehaviour
     bool jumpIsBuffered = false;
     int framesLeftForBufferedJump = 0;
     int jumpsUsed = 0;
-    bool recentlyJumped = false;
-    int recentlyJumpedFramesThresehold = 20; //Frames
-    int recentlyJumpedFramesCounter = 0;
 
 
     // Animations
@@ -87,7 +83,6 @@ public class PlayerMovement : MonoBehaviour
     {
         GroundCheck();
         HorizontalMovementManager();
-        //SlopeManager();
         JumpManager();
         GravityAdjustment();
         CornerCorrecting();
@@ -121,17 +116,12 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 centerPos = transform.position;
 
-        RaycastHit2D hitCenter;
-        hitCenter = Physics2D.Raycast(centerPos, Vector2.down, col.bounds.size.y + 0.1f);
+        RaycastHit2D hit;
+        hit = Physics2D.Raycast(centerPos, Vector2.down, col.bounds.size.y + 0.1f);
+        if (hit)
+            Debug.DrawLine(centerPos, hit.point, Color.red, 0.1f);
 
-        RaycastHit2D hitLeft;
-        hitLeft = Physics2D.Raycast(new Vector2(centerPos.x - (col.bounds.size.x / 4), centerPos.y), Vector2.down, col.bounds.size.y + 0.1f);
-
-
-        RaycastHit2D hitRight;
-        hitRight = Physics2D.Raycast(new Vector2(centerPos.x + (col.bounds.size.x / 4), centerPos.y), Vector2.down, col.bounds.size.y + 0.1f);
-
-        if (hitCenter || hitLeft || hitRight)
+        if (hit)
         {
             grounded = true;
             coyoteTimer = coyoteTime;
@@ -185,12 +175,6 @@ public class PlayerMovement : MonoBehaviour
     private void JumpManager()
     {
         coyoteTimer -= Time.deltaTime;
-        if (recentlyJumped)
-        {
-            recentlyJumpedFramesCounter--;
-            if(recentlyJumpedFramesCounter <= 0)
-                recentlyJumped = false;
-        }
 
         if (bufferJumpInput)
             ManageJumpingWithBufferTime();
@@ -269,8 +253,7 @@ public class PlayerMovement : MonoBehaviour
     {
         jumpIsBuffered = false;
         coyoteTimer = 0;
-        recentlyJumped = true;
-        recentlyJumpedFramesCounter = recentlyJumpedFramesThresehold;
+
         if(isDoubleJump)
            jumpsUsed++;
 
@@ -293,6 +276,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void CornerCorrecting()
     {
+
         if (!useCorenerCorrection) 
             return;
 
@@ -321,8 +305,8 @@ public class PlayerMovement : MonoBehaviour
         else
             return;
 
-        airCollisionLower = Physics2D.Raycast(startPointLower, directionToCheck, col.bounds.size.x);
-        airCollisionUpper = Physics2D.Raycast(startPointUpper, directionToCheck, col.bounds.size.x);
+        airCollisionLower = Physics2D.Raycast(startPointLower, directionToCheck, (col.bounds.size.x / 2) + 0.01f);
+        airCollisionUpper = Physics2D.Raycast(startPointUpper, directionToCheck, (col.bounds.size.x /2) + 0.01f);
 
         if(airCollisionLower && !airCollisionUpper)
         {
@@ -331,6 +315,7 @@ public class PlayerMovement : MonoBehaviour
             targetPosition.x += directionToCheck.x * airCollisionLower.distance;
             targetPosition.y += startPointUpper.y - startPointLower.y;
             rb.transform.position = targetPosition;
+
         }
         else if (airCollisionLower)
         {
@@ -396,67 +381,5 @@ public class PlayerMovement : MonoBehaviour
             movingLeft = false;
         else if(determiningVariable < 0) 
             movingLeft = true;
-    }
-
-    private void SlopeManager()
-    {
-        // Ensure no friction by default
-        if (physicsMaterial.friction != 0f)
-            SetColliderFriction(0f);
-
-        // If the player isn't grounded, they are not on a slope
-        if (!grounded)
-        {
-            onSlope= false;
-            return;
-        }
-
-        // Check the ground
-        RaycastHit2D hit;
-        hit = Physics2D.Raycast(this.transform.position, Vector2.down, col.bounds.size.y + 0.1f);
-
-        // If the normal.x of the ground isn't 0, the player is on a slope
-        if (hit && Mathf.Abs(hit.normal.x) > 0.1f)
-        {
-            onSlope= true;
-
-            // When not moving, the player stays where they are
-            if(directionalInput.x == 0)
-            {
-                if(physicsMaterial.friction != 10f)
-                    SetColliderFriction(10f);
-
-                if (!recentlyJumped)
-                    rb.velocity = new Vector2(rb.velocity.x, Mathf.Abs(rb.velocity.y) * -1f);
-            }
-
-            // If the player is moving, set friction back to 0, and follow the angle of the slope
-            // Only follow the angle of the slope if going downards, to avoid bouncing down
-            // With 0 friction we won't lose speed going up a slope anyway
-            if (directionalInput.x != 0)
-            {
-                SetColliderFriction(0f);
-
-                if (!recentlyJumped)
-                {
-                    var slopeRotation = Quaternion.FromToRotation(Vector2.up, hit.normal);
-                    var adjustedVelocty = slopeRotation * rb.velocity;
-                    if (adjustedVelocty.y < 0)
-                        rb.velocity = adjustedVelocty;
-                }
-            }
-        }
-        else
-            onSlope = false;
-
-        // To apply changes to the physics material, the collider must be turned off and on again
-        // Since this is done within the same frame it shouldn't cause any issues
-        void SetColliderFriction(float friction)
-        {
-            col.enabled = false;
-            physicsMaterial.friction = friction;
-            col.enabled = true;
-        }
-    }
-    
+    }  
 }
