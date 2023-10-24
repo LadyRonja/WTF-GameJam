@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Spikes_0
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 1333.3333
+        width: 666.6667
+        height: 666.6667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23c5c7658fde84018835d89d914740fa
+      internalID: 2074006851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spikes_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 667.3333
+        width: 666.6667
+        height: 666.6667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4770591d1be074df9a79522fd50836de
+      internalID: -2110865851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spikes_2
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 667.3333
+        width: 666.6667
+        height: 666.6667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89b16f976f4a94ed7b436c8b6cc9176d
+      internalID: -1185822197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spikes_3
+      rect:
+        serializedVersion: 2
+        x: 1332
+        y: 667.3333
+        width: 666.6667
+        height: 666.6667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 388187f526d734e02825c892dd320744
+      internalID: 501993978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spikes_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.333313
+        width: 666.6667
+        height: 666.6667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d411129546854e2284f06cca783cad3
+      internalID: 525783333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spikes_5
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 1.333313
+        width: 666.6667
+        height: 666.6667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 728c63f9b681f4557b948bb180443b88
+      internalID: -560845645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spikes_6
+      rect:
+        serializedVersion: 2
+        x: 1332
+        y: 1.333313
+        width: 666.6667
+        height: 666.6667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b51bd01e2b9b46b7b2c02b74e4be0f3
+      internalID: 236513625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +266,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Spikes_0: 2074006851
+      Spikes_1: -2110865851
+      Spikes_2: -1185822197
+      Spikes_3: 501993978
+      Spikes_4: 525783333
+      Spikes_5: -560845645
+      Spikes_6: 236513625
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
