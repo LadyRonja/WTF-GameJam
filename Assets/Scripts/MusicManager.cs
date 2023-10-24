@@ -17,6 +17,8 @@ public class MusicManager : MonoBehaviour
 
     private void Update()
     {
+        if (player == null) return;
+        if (monster == null) return;
         DecideMusic();
     }
 
