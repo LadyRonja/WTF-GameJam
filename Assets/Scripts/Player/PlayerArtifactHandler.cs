@@ -50,6 +50,12 @@ public class PlayerArtifactHandler : MonoBehaviour
             Vector2 dir = Vector2.zero;
             dir.x = Input.GetAxis("HorAimController");
             dir.y = Input.GetAxis("VerAimController");
+
+            if(dir == Vector2.zero)
+            {
+                dir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+                dir.Normalize();
+            }
             Throw(dir);
         }
 
