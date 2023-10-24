@@ -32,10 +32,12 @@ public class CameraController : MonoBehaviour
     [Header("Look Ahead")]
     [SerializeField] PlayerMovement player; 
     public float maxLookAhead = 3f;
+    public float smoothTime = 0.3f;
     Vector3 mousePosLastFrame = Vector3.zero;
     public float xOffSet = 0f;
     public float yOffSet = 0f;
     public bool usingMouse = false;
+    Vector3 velocity = Vector3.zero;
 
     [Header("Screen Shake")]
     [SerializeField] bool additiveShake = true;
@@ -66,8 +68,6 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale == 0) return;
-
         #region Debug
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -80,7 +80,12 @@ public class CameraController : MonoBehaviour
             ShakeScreen(debugShakeAmount, direction.normalized);
             FreezeGame(debugFreezeAmount);
         }
-        #endregion
+        #endregion 
+    }
+
+    private void FixedUpdate()
+    {
+        if (Time.timeScale == 0) return;
 
         CameraBehaivour(state);
     }
@@ -144,9 +149,9 @@ public class CameraController : MonoBehaviour
 
             if (dir == Vector2.zero)
             {
-                dir.x = player.rb.velocity.x;
-                dir.Normalize();
+                dir.x = player.rb.velocity.x / (player.groundSpeedMax / 2f);
             }
+
         }
         else 
         {
@@ -157,15 +162,15 @@ public class CameraController : MonoBehaviour
         positionToCenter.x = player.transform.position.x;
         positionToCenter.y = player.transform.position.y;
 
-        positionToCenter = new Vector3(positionToCenter.x + dir.x * maxLookAhead + xOffSet, positionToCenter.y + dir.y * maxLookAhead + yOffSet, cam.transform.position.z);
+        positionToCenter = new Vector3(
+            positionToCenter.x + dir.x * maxLookAhead + xOffSet,
+            positionToCenter.y + dir.y * maxLookAhead + yOffSet,
+            cam.transform.position.z);
 
-        if (FastMath.Distance(cam.transform.position, positionToCenter) > 0.3f)
-        {
-            cam.transform.position = Vector3.MoveTowards(cam.transform.position, positionToCenter, Time.deltaTime * 7f);
-        }
-        else
+        /*if (dir == Vector2.zero)
             cam.transform.position = positionToCenter;
-
+        else*/
+            cam.transform.position = Vector3.SmoothDamp(cam.transform.position, positionToCenter, ref velocity, smoothTime);
     }
 
     private void SetCameraPosition()

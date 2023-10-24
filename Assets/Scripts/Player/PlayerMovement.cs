@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Essentials
     Vector2 directionalInput = Vector2.zero;
-    public Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
     Collider2D col;
     PhysicsMaterial2D physicsMaterial;
 
@@ -112,12 +112,13 @@ public class PlayerMovement : MonoBehaviour
         Vector2 centerPos = transform.position;
 
         RaycastHit2D hit;
-        hit = Physics2D.Raycast(centerPos, Vector2.down, col.bounds.size.y + 0.1f);
+        hit = Physics2D.Raycast(centerPos, Vector2.down, (col.bounds.size.y) /2f + 0.1f);
         if (hit)
             Debug.DrawLine(centerPos, hit.point, Color.red, 0.1f);
 
         if (hit)
         {
+            Debug.Log("grounded");
             grounded = true;
             coyoteTimer = coyoteTime;
             jumpsUsed = 0;
@@ -257,6 +258,8 @@ public class PlayerMovement : MonoBehaviour
 
         if(isDoubleJump)
            jumpsUsed++;
+
+        Debug.Log(jumpsUsed);
 
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
