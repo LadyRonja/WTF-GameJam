@@ -72,7 +72,7 @@ MonoBehaviour:
   airSpeedMax: 5
   groundedDeceleration: 0.7
   onlyDecelerateInAirWithoutInput: 1
-  airDeceleration: 0.975
+  airDeceleration: 0.9749
   jumpForce: 6
   amountOfDoubleJumps: 1
   useCoyoteTime: 1
