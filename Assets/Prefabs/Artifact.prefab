@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 852823142143782784}
   - component: {fileID: 4547098403796747136}
   - component: {fileID: 4056822829418420280}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Artifact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,6 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c27c176a7cedb0478a46a7897cdb2b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!50 &4547098403796747136
 Rigidbody2D:
   serializedVersion: 4
@@ -119,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5995235205273380641}
   - component: {fileID: 5540315040401483454}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

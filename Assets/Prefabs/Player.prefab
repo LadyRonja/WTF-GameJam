@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   artifact: {fileID: 0}
-  throwSpeed: 20
+  throwSpeed: 10
   pickupRadius: 0.8
-  pickUpCooldown: 1
+  pickUpCooldown: 0.5
 --- !u!114 &4727713071086820772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +75,7 @@ MonoBehaviour:
   jumpForce: 6
   amountOfDoubleJumps: 1
   useCoyoteTime: 1
-  coyoteTime: 0.3
+  coyoteTime: 0.1
   increasedFallGravity: 1
   jumpGravity: 1.5
   fallGravity: 3

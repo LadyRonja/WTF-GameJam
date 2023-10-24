@@ -2260,18 +2260,6 @@ PrefabInstance:
       propertyPath: artifact
       value: 
       objectReference: {fileID: 1823660035}
-    - target: {fileID: 3609659370599087108, guid: 7efaa61eca3fe234a83d4d103f3d040c, type: 3}
-      propertyPath: throwSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3609659370599087108, guid: 7efaa61eca3fe234a83d4d103f3d040c, type: 3}
-      propertyPath: pickUpCooldown
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4727713071086820772, guid: 7efaa61eca3fe234a83d4d103f3d040c, type: 3}
-      propertyPath: coyoteTime
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 5005215783376600692, guid: 7efaa61eca3fe234a83d4d103f3d040c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
