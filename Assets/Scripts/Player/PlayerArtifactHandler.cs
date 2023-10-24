@@ -64,8 +64,7 @@ public class PlayerArtifactHandler : MonoBehaviour
             pickUpTimer = pickUpCooldown;
             isCarrying = false;
             artifact.rb.gravityScale = 1;
-            artifact.transform.up = (Vector3)direction;
-            artifact.rb.velocity = direction * throwSpeed;
+            artifact.Throw(direction, throwSpeed);
         }
     }
 

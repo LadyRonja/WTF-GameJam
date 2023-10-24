@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -34,6 +35,9 @@ public class CameraController : MonoBehaviour
     [SerializeField] float shakeStabalizer = 5f;
     Vector2 shakeDirection = Vector2.zero;
     CameraStates previousState = CameraStates.TrackingSingle;
+
+    public float Height { get => GetHeight(); }
+    public float Width { get => GetWidth(); }
 
     private void Awake()
     {
@@ -165,5 +169,15 @@ public class CameraController : MonoBehaviour
         Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(duration);
         Time.timeScale = 1f;
+    }
+
+    private float GetHeight()
+    {
+        return Camera.main.orthographicSize * 2;
+    }
+
+    private float GetWidth()
+    {
+        return GetHeight() * Camera.main.aspect;
     }
 }

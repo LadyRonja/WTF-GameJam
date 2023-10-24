@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental;
 using UnityEngine;
 
 public class Artifact : MonoBehaviour
 {
     public int damage = 1;
+    [HideInInspector] public bool damageOnHit = false;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public Collider2D col;
 
@@ -22,9 +24,20 @@ public class Artifact : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.TryGetComponent<IDamagable>(out IDamagable damagable))
-        {
-            damagable.TakeDamage(damage);
+        if(damageOnHit) 
+        { 
+            if(other.gameObject.TryGetComponent<IDamagable>(out IDamagable damagable))
+            {
+                damageOnHit = false;
+                damagable.TakeDamage(damage);
+            }
         }
+    }
+
+    public void Throw(Vector2 direction, float force)
+    {
+        transform.up = (Vector3)direction;
+        rb.velocity = direction * force;
+        damageOnHit= true;
     }
 }
