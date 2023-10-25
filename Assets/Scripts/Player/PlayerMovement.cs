@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     // Essentials
     Vector2 directionalInput = Vector2.zero;
     [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public PlayerAnimationManager anim;
     Collider2D col;
     PhysicsMaterial2D physicsMaterial;
 
@@ -70,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+        anim = GetComponent<PlayerAnimationManager>();
         physicsMaterial = col.sharedMaterial;
     }
 
@@ -92,13 +94,11 @@ public class PlayerMovement : MonoBehaviour
     {
         DetermineState();
 
-        // Inform animator of flip here
-        // example: animationHandler.SetFlip(movingLeft);
+        anim.SetFlip(movingLeft);
 
         if (lastState != state)
         {
-            // Call animation handler from here
-            // example: animationHandler.UpdateState(state);
+            anim.SetAnimation(state);
         }
         lastState = state;
     }
