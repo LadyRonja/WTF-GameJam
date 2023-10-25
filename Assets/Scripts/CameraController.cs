@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
 {
     [Header("Generic")]
     public static CameraController Instance;
-    private Camera cam;
+    [SerializeField] private Camera cam;
     public CameraStates state = CameraStates.TrackingSingle;
     [SerializeField] float debugShakeAmount = 2f;
     [SerializeField] float debugFreezeAmount = 0.1f;
@@ -36,7 +36,6 @@ public class CameraController : MonoBehaviour
     Vector3 mousePosLastFrame = Vector3.zero;
     public float xOffSet = 0f;
     public float yOffSet = 0f;
-    public bool usingMouse = false;
     Vector3 velocity = Vector3.zero;
 
     [Header("Screen Shake")]
@@ -63,11 +62,17 @@ public class CameraController : MonoBehaviour
         }
         #endregion
 
-        cam = Camera.main;
+        if(cam == null)
+            cam = Camera.main;
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            GameSettings.usingGamepad = !GameSettings.usingGamepad;
+        }
+
         #region Debug
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -142,7 +147,7 @@ public class CameraController : MonoBehaviour
     {
         Vector2 dir = Vector2.zero;
 
-        if (!usingMouse)
+        if (GameSettings.usingGamepad)
         {
             dir.x = Input.GetAxis("HorAimController");
             dir.y = Input.GetAxis("VerAimController");

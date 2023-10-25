@@ -2895,25 +2895,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4478652344419996636, guid: be28d9c144fa1614dbc0e8d3cdaea58a, type: 3}
-      propertyPath: state
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4478652344419996636, guid: be28d9c144fa1614dbc0e8d3cdaea58a, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1840208122}
-    - target: {fileID: 4478652344419996636, guid: be28d9c144fa1614dbc0e8d3cdaea58a, type: 3}
-      propertyPath: yOffSet
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4478652344419996636, guid: be28d9c144fa1614dbc0e8d3cdaea58a, type: 3}
-      propertyPath: smoothTime
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4478652344419996636, guid: be28d9c144fa1614dbc0e8d3cdaea58a, type: 3}
-      propertyPath: maxLookAhead
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4478652344419996636, guid: be28d9c144fa1614dbc0e8d3cdaea58a, type: 3}
       propertyPath: objectToFollow
       value: 

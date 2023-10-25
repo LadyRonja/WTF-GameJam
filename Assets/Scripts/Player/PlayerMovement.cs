@@ -118,7 +118,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (hit)
         {
-            Debug.Log("grounded");
             grounded = true;
             coyoteTimer = coyoteTime;
             jumpsUsed = 0;
@@ -258,8 +257,6 @@ public class PlayerMovement : MonoBehaviour
 
         if(isDoubleJump)
            jumpsUsed++;
-
-        Debug.Log(jumpsUsed);
 
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }

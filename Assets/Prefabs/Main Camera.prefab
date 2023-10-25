@@ -105,12 +105,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0334d9891c7474bae429296355ca6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 1
+  cam: {fileID: 0}
+  state: 3
   debugShakeAmount: 2
   debugFreezeAmount: 0.1
   objectToFollow: {fileID: 0}
   ignoreX: 0
   ignoreY: 1
+  player: {fileID: 0}
+  maxLookAhead: 3
+  smoothTime: 0.5
+  xOffSet: 0
+  yOffSet: 1.5
   additiveShake: 1
   prioritizeLargeShake: 1
   shakeStabalizer: 5
