@@ -63,9 +63,7 @@ public class HunterScript : MonoBehaviour
             Debug.DrawRay(rb2D.position, Vector2.right, Color.red, 0.05f);
             if (wallInfo == true)
             {
-                if (wallInfo.collider.CompareTag("Player"))                
-                    Debug.Log("Hit");                
-                else                
+                if (!wallInfo.collider.CompareTag("Player"))           
                     GravityFlip(); 
             }            
             checkPosTimer = 0;
@@ -76,6 +74,9 @@ public class HunterScript : MonoBehaviour
         rb2D.gravityScale *= -1;        
         upsideDown = !upsideDown;
         spriteRenderer.flipY = upsideDown;
+
+        if (upsideDown)
+            rb2D.AddForce(Vector2.up * 20f, ForceMode2D.Impulse);
     }
     private void OnCollisionEnter2D(Collision2D other)
     {       
