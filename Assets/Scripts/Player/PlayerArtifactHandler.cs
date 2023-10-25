@@ -9,6 +9,7 @@ public class PlayerArtifactHandler : MonoBehaviour
 
     [Header("Throwing")]
     public float throwSpeed = 15f;
+    Vector2 direction = Vector2.zero;
 
     [Header("Pickup")]
     [SerializeField] float pickupRadius = 0.8f;
@@ -40,10 +41,10 @@ public class PlayerArtifactHandler : MonoBehaviour
 
         if (Input.GetButtonDown("Fire"))
         {
-            Vector2 dir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
-            dir.Normalize();
+            direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+            direction.Normalize();
 
-            Throw(dir);
+            Throw(direction);
         }
         else if (Input.GetButtonDown("FireController"))
         {
@@ -51,12 +52,10 @@ public class PlayerArtifactHandler : MonoBehaviour
             dir.x = Input.GetAxis("HorAimController");
             dir.y = Input.GetAxis("VerAimController");
 
-            if(dir == Vector2.zero)
-            {
-                dir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
-                dir.Normalize();
-            }
-            Throw(dir);
+            if (dir != Vector2.zero)
+                direction = dir;
+
+            Throw(direction.normalized);
         }
 
         void Throw(Vector2 direction)

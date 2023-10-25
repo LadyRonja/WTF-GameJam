@@ -25,7 +25,7 @@ public class MusicManager : MonoBehaviour
     private void DecideMusic()
     {
         if(FastMath.Distance(player.position, monster.position) >
-            Mathf.Min(CameraController.Instance.Height, CameraController.Instance.Width))
+            Mathf.Max(CameraController.Instance.Height, CameraController.Instance.Width))
         {
             if(musicSource.clip != ambientMusic)
             {

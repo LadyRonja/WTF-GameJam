@@ -17,8 +17,8 @@ TagManager:
   - 
   - Artifact
   - 
-  - 
-  - 
+  - MonsterBlock
+  - Monster
   - 
   - 
   - 
@@ -40,4 +40,28 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2329772895
+    locked: 0
+  - name: Middleground
+    uniqueID: 1373631277
+    locked: 0
+  - name: Player
+    uniqueID: 1279677411
+    locked: 0
+  - name: Enemies
+    uniqueID: 1659248349
+    locked: 0
+  - name: Artifact
+    uniqueID: 3302016239
+    locked: 0
+  - name: Hunter
+    uniqueID: 1403600343
+    locked: 0
+  - name: Level
+    uniqueID: 200141647
+    locked: 0
+  - name: Foreground
+    uniqueID: 14546415
     locked: 0
