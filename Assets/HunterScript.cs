@@ -13,6 +13,7 @@ public class HunterScript : MonoBehaviour
     public float minimumDistance;
     public Vector2 hunterPosition;
     public Vector2 lastHunterPosition;
+    Vector2 rayDirection;
     public float hunterLastFramePositionX;
     public float checkPosTimer;
     public float showMe;
@@ -25,9 +26,8 @@ public class HunterScript : MonoBehaviour
     public float dirCheck = -0.2f;
     public float obsticleCheck;
     Collider2D collider;
-
-
     Rigidbody2D rb2D;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -48,10 +48,12 @@ public class HunterScript : MonoBehaviour
         if (direction.x < 0)
         {
             movingRight = false;
+            rayDirection = Vector2.left;
         }
         else
         {
             movingRight = true;
+            rayDirection = Vector2.right;
         }
         if (movingRight != movingRightLastFrame)
         {
@@ -74,7 +76,7 @@ public class HunterScript : MonoBehaviour
             if(math.abs(rb2D.position.x - target.position.x) <= 0.6f)
                 GravityFlip();
             
-            RaycastHit2D wallInfo = Physics2D.Raycast(rb2D.position, Vector2.right, (collider.bounds.size.x) + 0.2f);
+            RaycastHit2D wallInfo = Physics2D.Raycast(rb2D.position, rayDirection, (collider.bounds.size.x) + 0.2f);
             Debug.DrawRay(rb2D.position, Vector2.right, Color.red, 0.05f);
             if (wallInfo == true)
             {
