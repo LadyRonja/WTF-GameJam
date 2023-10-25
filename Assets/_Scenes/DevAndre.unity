@@ -418,7 +418,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6924ad033d3de064c82418cccc560b51, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16fbd751aac20c74286041befb2dbe31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 3
   target: {fileID: 1840208118}
   spriteRenderer: {fileID: 1840208121}
   minimumDistance: 2
@@ -474,8 +474,8 @@ MonoBehaviour:
   checkDirectionTimer: 0
   dirCheck: 0
   obsticleCheck: 0
---- !u!70 &625785318
-CapsuleCollider2D:
+--- !u!58 &625785318
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -506,9 +506,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.75, y: -0.24}
-  m_Size: {x: 2.61, y: 1.15}
-  m_Direction: 1
+  m_Offset: {x: 0.15, y: -0.12}
+  serializedVersion: 2
+  m_Radius: 0.74
 --- !u!1 &739695017
 GameObject:
   m_ObjectHideFlags: 0

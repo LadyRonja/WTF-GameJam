@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -369240634315417980}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,6 +87,7 @@ MonoBehaviour:
   inputBufferAmount: 2
   useCorenerCorrection: 1
   cornerCorrectionLeniancy: 0.15
+  rb: {fileID: 0}
 --- !u!70 &3446256619576799026
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

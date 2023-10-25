@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -40,6 +41,10 @@ public class HunterScript : MonoBehaviour
     void Update()
     {
         Vector2 direction = target.position - transform.position;
+        if (upsideDown)
+            speed = 7f;
+        else
+            speed = 3;
         if (direction.x < 0)
         {
             movingRight = false;
@@ -52,7 +57,9 @@ public class HunterScript : MonoBehaviour
         {
             transform.right *= -1f;
             if (upsideDown)
-                spriteRenderer.flipY = true;
+            {
+                spriteRenderer.flipY = true;                
+            }
             else 
                 spriteRenderer.flipY = false;
         }
@@ -64,15 +71,22 @@ public class HunterScript : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         if (checkPosTimer >= 1)
         {        
-            if(math.abs(rb2D.position.x - target.position.x) <= 0.2f)
+            if(math.abs(rb2D.position.x - target.position.x) <= 0.6f)
                 GravityFlip();
             
-            RaycastHit2D wallInfo = Physics2D.Raycast(rb2D.position, Vector2.right, (collider.bounds.size.x) + 0.1f);
+            RaycastHit2D wallInfo = Physics2D.Raycast(rb2D.position, Vector2.right, (collider.bounds.size.x) + 0.2f);
             Debug.DrawRay(rb2D.position, Vector2.right, Color.red, 0.05f);
             if (wallInfo == true)
             {
-                GravityFlip();
-                Debug.Log(wallInfo.transform.name);
+                if (wallInfo.collider.CompareTag("Player"))
+                {
+                    Debug.Log("Hit");
+                }
+                else
+                {
+                    GravityFlip();
+                    Debug.Log(wallInfo.transform.name);
+                }
             }
             checkPosTimer = 0;
         }
