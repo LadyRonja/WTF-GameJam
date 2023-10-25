@@ -79,7 +79,11 @@ public class PlayerArtifactHandler : MonoBehaviour
             if (Mathf.Abs(dist.sqrMagnitude) < pickupRadius * pickupRadius)
             {
                 isCarrying = true;
+                artifact.damageOnHit = false;
                 artifact.rb.gravityScale = 0;
+
+                if (CameraController.Instance.state != CameraStates.LookAhead)
+                    CameraController.Instance.state = CameraStates.LookAhead;
             }
         }
     }

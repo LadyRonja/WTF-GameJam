@@ -6,19 +6,26 @@ public class AimDisplay : MonoBehaviour
 {
     [SerializeField] Transform player;
     [SerializeField] float offSet = 0.5f;
+    Vector2 direction = Vector2.zero;
 
     private void Update()
     {
-        Vector2 dir = Vector2.zero;
-
-        dir.x = Input.GetAxis("HorAimController");
-        dir.y = Input.GetAxis("VerAimController");
-        if (dir == Vector2.zero)
+        if (GameSettings.usingGamepad)
         {
-            dir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.transform.position);
+            float x = Input.GetAxis("HorAimController");
+            float y = Input.GetAxis("VerAimController");
+
+            if(x != 0 && y != 0)
+            {
+                direction = new Vector2(x, y);
+            }
         }
-        dir.Normalize();
-        transform.up = dir;
+        else
+        {
+            direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.transform.position);
+        }
+        direction.Normalize();
+        transform.up = direction;
         transform.localPosition = transform.up * offSet;
     }
 }
