@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2363852710907542208}
   - component: {fileID: 7639777870987271968}
   - component: {fileID: 4842593293769867437}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hunter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,6 +81,7 @@ MonoBehaviour:
   movingRight: 0
   movingRightLastFrame: 1
   upsideDown: 0
+  grounded: 0
 --- !u!58 &4842593293769867437
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -126,7 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 955556928596408859}
   - component: {fileID: 1450541643477349438}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
