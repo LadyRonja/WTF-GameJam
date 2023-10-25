@@ -15,7 +15,7 @@ public class AimDisplay : MonoBehaviour
         dir.y = Input.GetAxis("VerAimController");
         if (dir == Vector2.zero)
         {
-            dir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+            dir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.transform.position);
         }
         dir.Normalize();
         transform.up = dir;

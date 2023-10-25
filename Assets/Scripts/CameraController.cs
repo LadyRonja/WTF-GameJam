@@ -9,6 +9,7 @@ public enum CameraStates
     Inactive,
     TrackingSingle,
     TrackingMultiple,
+    LookAhead,
     MoveToTarget,
     Shaking
 }
@@ -21,12 +22,22 @@ public class CameraController : MonoBehaviour
     public CameraStates state = CameraStates.TrackingSingle;
     [SerializeField] float debugShakeAmount = 2f;
     [SerializeField] float debugFreezeAmount = 0.1f;
+    Vector3 positionToCenter;
 
     [Header("Single object Tracking")]
     public Transform objectToFollow;
-    Vector3 positionToCenter;
     public bool ignoreX = false;
     public bool ignoreY = false;
+
+    [Header("Look Ahead")]
+    [SerializeField] PlayerMovement player; 
+    public float maxLookAhead = 3f;
+    public float smoothTime = 0.3f;
+    Vector3 mousePosLastFrame = Vector3.zero;
+    public float xOffSet = 0f;
+    public float yOffSet = 0f;
+    public bool usingMouse = false;
+    Vector3 velocity = Vector3.zero;
 
     [Header("Screen Shake")]
     [SerializeField] bool additiveShake = true;
@@ -57,8 +68,6 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale == 0) return;
-
         #region Debug
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -71,9 +80,19 @@ public class CameraController : MonoBehaviour
             ShakeScreen(debugShakeAmount, direction.normalized);
             FreezeGame(debugFreezeAmount);
         }
-        #endregion
+        #endregion 
+    }
+
+    private void FixedUpdate()
+    {
+        if (Time.timeScale == 0) return;
 
         CameraBehaivour(state);
+    }
+
+    private void LateUpdate()
+    {
+        mousePosLastFrame = Input.mousePosition;
     }
 
     private void CameraBehaivour(CameraStates operationState)
@@ -97,6 +116,9 @@ public class CameraController : MonoBehaviour
             case CameraStates.Shaking:
                 Shaking();
                 break;
+            case CameraStates.LookAhead:
+                LookAhead();
+                break;
             default:
                 Debug.LogError("Reached end of switch-state-machine, states not covered?");
                 Debug.Log("Switching to Inactive cameaState");
@@ -110,7 +132,50 @@ public class CameraController : MonoBehaviour
         if(!ignoreX) positionToCenter.x = objectToFollow.position.x;
         if(!ignoreY) positionToCenter.y = objectToFollow.position.y;
 
-        cam.transform.position = new Vector3(positionToCenter.x, positionToCenter.y, cam.transform.position.z);
+
+        positionToCenter = new Vector3(positionToCenter.x, positionToCenter.y, cam.transform.position.z);
+
+        SetCameraPosition();
+    }
+
+    private void LookAhead()
+    {
+        Vector2 dir = Vector2.zero;
+
+        if (!usingMouse)
+        {
+            dir.x = Input.GetAxis("HorAimController");
+            dir.y = Input.GetAxis("VerAimController");
+
+            if (dir == Vector2.zero)
+            {
+                dir.x = player.rb.velocity.x / (player.groundSpeedMax / 2f);
+            }
+
+        }
+        else 
+        {
+            dir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.transform.position);
+            dir.Normalize();
+        }
+
+        positionToCenter.x = player.transform.position.x;
+        positionToCenter.y = player.transform.position.y;
+
+        positionToCenter = new Vector3(
+            positionToCenter.x + dir.x * maxLookAhead + xOffSet,
+            positionToCenter.y + dir.y * maxLookAhead + yOffSet,
+            cam.transform.position.z);
+
+        /*if (dir == Vector2.zero)
+            cam.transform.position = positionToCenter;
+        else*/
+            cam.transform.position = Vector3.SmoothDamp(cam.transform.position, positionToCenter, ref velocity, smoothTime);
+    }
+
+    private void SetCameraPosition()
+    {
+        cam.transform.position = positionToCenter;
     }
 
     private void Shaking()

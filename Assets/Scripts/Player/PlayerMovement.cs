@@ -4,14 +4,9 @@ using UnityEngine;
 public enum PlayerState
 {
     Idle,
-    Walk,
     Run,
-    Crouch,
     Jump,
-    Fall,
-    Dead,
-    Attack,
-    Dash
+    Fall
 }
 public class PlayerMovement : MonoBehaviour
 {
@@ -26,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public bool onlyDecelerateInAirWithoutInput = true;
     [Range(0.7f, 0.999f)] public float airDeceleration = 0.975f;
 
-[Header("Jumping controls")]
+    [Header("Jumping controls")]
     public float jumpForce = 30f;
     [Tooltip("You can always jump off the ground, doubleJumps only count from the air, exluding coyote time")] 
     public int amountOfDoubleJumps = 1;
@@ -50,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Essentials
     Vector2 directionalInput = Vector2.zero;
-    Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
     Collider2D col;
     PhysicsMaterial2D physicsMaterial;
 
@@ -117,12 +112,13 @@ public class PlayerMovement : MonoBehaviour
         Vector2 centerPos = transform.position;
 
         RaycastHit2D hit;
-        hit = Physics2D.Raycast(centerPos, Vector2.down, col.bounds.size.y + 0.1f);
+        hit = Physics2D.Raycast(centerPos, Vector2.down, (col.bounds.size.y) /2f + 0.1f);
         if (hit)
             Debug.DrawLine(centerPos, hit.point, Color.red, 0.1f);
 
         if (hit)
         {
+            Debug.Log("grounded");
             grounded = true;
             coyoteTimer = coyoteTime;
             jumpsUsed = 0;
@@ -263,6 +259,8 @@ public class PlayerMovement : MonoBehaviour
         if(isDoubleJump)
            jumpsUsed++;
 
+        Debug.Log(jumpsUsed);
+
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
     #endregion
@@ -373,10 +371,8 @@ public class PlayerMovement : MonoBehaviour
         // Idle, Walking, Running
         if (directionalInput.x == 0 /*&& Mathf.Abs(rb.velocity.x) <= 0.05f */ && grounded) // Uncomment to avoid "idle slide"
             state = PlayerState.Idle;
-        else if (grounded/* && Mathf.Abs(rb.velocity.x) > runningThresehold*/) // Uncomment and define runningThresehold if using both running/walking animations
-            state = PlayerState.Run;
         else if (grounded)
-            state = PlayerState.Walk;
+            state = PlayerState.Run;
 
         // Determine Flip
         // Ternary conditional operator:
