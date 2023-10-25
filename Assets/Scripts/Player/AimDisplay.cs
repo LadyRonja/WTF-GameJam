@@ -15,10 +15,8 @@ public class AimDisplay : MonoBehaviour
             float x = Input.GetAxis("HorAimController");
             float y = Input.GetAxis("VerAimController");
 
-            if(x != 0 && y != 0)
-            {
+            if (x != 0 && y != 0)
                 direction = new Vector2(x, y);
-            }
         }
         else
         {

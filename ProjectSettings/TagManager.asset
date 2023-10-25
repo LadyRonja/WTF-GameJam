@@ -50,6 +50,9 @@ TagManager:
   - name: Player
     uniqueID: 1279677411
     locked: 0
+  - name: Enemies
+    uniqueID: 1659248349
+    locked: 0
   - name: Artifact
     uniqueID: 3302016239
     locked: 0
