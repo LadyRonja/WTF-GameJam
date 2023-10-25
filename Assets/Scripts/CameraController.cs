@@ -173,9 +173,7 @@ public class CameraController : MonoBehaviour
             positionToCenter.y + dir.y * maxLookAhead + yOffSet,
             cam.transform.position.z);
 
-        /*if (dir == Vector2.zero)
-            cam.transform.position = positionToCenter;
-        else*/
+
             cam.transform.position = Vector3.SmoothDamp(cam.transform.position, positionToCenter, ref velocity, smoothTime);
     }
 
