@@ -9,31 +9,21 @@ public class HunterScript : MonoBehaviour
 {
     public float speed;
     public Transform target;
-    public SpriteRenderer spriteRenderer;
-    public float minimumDistance;
-    public Vector2 hunterPosition;
-    public Vector2 lastHunterPosition;
-    Vector2 rayDirection;
-    public float hunterLastFramePositionX;
-    public float checkPosTimer;
-    public float showMe;
-    public float hunterPositionX;
-    public float lastHunterPositionX;
-    public bool movingRight = true;
-    public bool movingRightLastFrame = true;
-    public bool upsideDown;
-    public float checkDirectionTimer;
-    public float dirCheck = -0.2f;
-    public float obsticleCheck;
-    Collider2D collider;
+    public SpriteRenderer spriteRenderer; 
+    Collider2D col;
     Rigidbody2D rb2D;
     
+    Vector2 rayDirection;    
 
-    // Start is called before the first frame update
+    public float checkPosTimer;       
+    public bool movingRight = true;
+    public bool movingRightLastFrame = true;
+    public bool upsideDown;  
+    
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        collider = GetComponent<Collider2D>();
+        col = GetComponent<Collider2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
@@ -42,7 +32,7 @@ public class HunterScript : MonoBehaviour
     {
         Vector2 direction = target.position - transform.position;
         if (upsideDown)
-            speed = 7f;
+            speed = 7;
         else
             speed = 3;
         if (direction.x < 0)
@@ -57,18 +47,11 @@ public class HunterScript : MonoBehaviour
         }
         if (movingRight != movingRightLastFrame)
         {
-            transform.right *= -1f;
-            if (upsideDown)
-            {
-                spriteRenderer.flipY = true;                
-            }
-            else 
-                spriteRenderer.flipY = false;
+            spriteRenderer.flipX = !movingRight;            
         }
         movingRightLastFrame = movingRight;
         
-        checkPosTimer += Time.deltaTime;
-        checkDirectionTimer += Time.deltaTime;
+        checkPosTimer += Time.deltaTime;        
         
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         if (checkPosTimer >= 1)
@@ -76,34 +59,23 @@ public class HunterScript : MonoBehaviour
             if(math.abs(rb2D.position.x - target.position.x) <= 0.6f)
                 GravityFlip();
             
-            RaycastHit2D wallInfo = Physics2D.Raycast(rb2D.position, rayDirection, (collider.bounds.size.x) + 0.2f);
+            RaycastHit2D wallInfo = Physics2D.Raycast(rb2D.position, rayDirection, (col.bounds.size.x) + 0.2f);
             Debug.DrawRay(rb2D.position, Vector2.right, Color.red, 0.05f);
             if (wallInfo == true)
             {
-                if (wallInfo.collider.CompareTag("Player"))
-                {
-                    Debug.Log("Hit");
-                }
-                else
-                {
-                    GravityFlip();
-                    Debug.Log(wallInfo.transform.name);
-                }
-            }
+                if (wallInfo.collider.CompareTag("Player"))                
+                    Debug.Log("Hit");                
+                else                
+                    GravityFlip(); 
+            }            
             checkPosTimer = 0;
         }
-        if (checkDirectionTimer >= 0.1f)
-        {
-            hunterLastFramePositionX = rb2D.position.x;
-            checkDirectionTimer = 0;
-        }
     }
-
     private void GravityFlip()
     {
-        rb2D.gravityScale *= -1;
-        transform.up = transform.up * -1;
+        rb2D.gravityScale *= -1;        
         upsideDown = !upsideDown;
+        spriteRenderer.flipY = upsideDown;
     }
     private void OnCollisionEnter2D(Collision2D other)
     {       

@@ -1083,6 +1083,17 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5667037704521862217, guid: 7efaa61eca3fe234a83d4d103f3d040c, type: 3}
   m_PrefabInstance: {fileID: 2090412189306751813}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1840208125 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4727713071086820772, guid: 7efaa61eca3fe234a83d4d103f3d040c, type: 3}
+  m_PrefabInstance: {fileID: 2090412189306751813}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30ab0dcaf13ce744877556e465b1542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1850474614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,6 +1544,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4478652344419996636, guid: be28d9c144fa1614dbc0e8d3cdaea58a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1840208125}
     - target: {fileID: 4478652344419996636, guid: be28d9c144fa1614dbc0e8d3cdaea58a, type: 3}
       propertyPath: objectToFollow
       value: 

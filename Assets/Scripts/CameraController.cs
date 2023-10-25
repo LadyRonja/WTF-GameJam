@@ -154,7 +154,8 @@ public class CameraController : MonoBehaviour
 
             if (dir == Vector2.zero)
             {
-                dir.x = player.rb.velocity.x / (player.groundSpeedMax / 2f);
+                if (player.rb != null)
+                    dir.x = player.rb.velocity.x / (player.groundSpeedMax / 2f);
             }
 
         }

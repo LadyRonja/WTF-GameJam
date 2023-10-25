@@ -77,20 +77,10 @@ MonoBehaviour:
   speed: 3
   target: {fileID: 0}
   spriteRenderer: {fileID: 0}
-  minimumDistance: 2
-  hunterPosition: {x: 0, y: 0}
-  lastHunterPosition: {x: 0, y: 0}
-  hunterLastFramePositionX: 0
   checkPosTimer: 0
-  showMe: 0
-  hunterPositionX: 0
-  lastHunterPositionX: 0
   movingRight: 0
   movingRightLastFrame: 1
   upsideDown: 0
-  checkDirectionTimer: 0
-  dirCheck: 0
-  obsticleCheck: 0
 --- !u!58 &4842593293769867437
 CircleCollider2D:
   m_ObjectHideFlags: 0
