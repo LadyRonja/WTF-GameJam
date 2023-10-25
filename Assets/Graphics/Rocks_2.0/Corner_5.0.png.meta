@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 441553f393e60437fb155f9006d795df
+guid: f9b7645f5d25549908b9873384c889ad
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 670
+  spritePixelsToUnits: 1000
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Corner_Tiles 1_0
+      name: Corner_5.0_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1333.3333
-        width: 666.6667
-        height: 666.6667
+        y: 2000
+        width: 1000
+        height: 1000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a221ff43b55f14e33a34292c5da70220
-      internalID: -507569765
+      spriteID: 6bf45198f56654d258a2a23808504668
+      internalID: -1397170360
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corner_Tiles 1_1
+      name: Corner_5.0_1
       rect:
         serializedVersion: 2
-        x: 666
-        y: 1333.3333
-        width: 666.6667
-        height: 666.6667
+        x: 1000
+        y: 2000
+        width: 1000
+        height: 1000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,41 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b17d6b9e0a2144d1aac43386c6232cc1
-      internalID: 175825513
+      spriteID: c32df99e256894c53b4fb75fc3fa01f1
+      internalID: -2076395443
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corner_Tiles 1_2
-      rect:
-        serializedVersion: 2
-        x: 1332
-        y: 1333.3333
-        width: 666.6667
-        height: 666.6667
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2db661042eea4bcfb537049e01f783c
-      internalID: 306338995
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Corner_Tiles 1_3
+      name: Corner_5.0_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 667.3333
-        width: 666.6667
-        height: 666.6667
+        y: 1000
+        width: 1000
+        height: 1000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1a4d4573abd84518bf982d685fd129d
-      internalID: -1723023632
+      spriteID: e992e99e5d651474c9b67aad72ddcbdd
+      internalID: 1450744840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corner_Tiles 1_4
+      name: Corner_5.0_3
       rect:
         serializedVersion: 2
-        x: 1332
-        y: 667.3333
-        width: 666.6667
-        height: 666.6667
+        x: 1000
+        y: 1000
+        width: 1000
+        height: 1000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +187,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b348cf2a31ad4731ac65c8a7eb747fb
-      internalID: 567836593
+      spriteID: 066d898d7a1264e1aa5de74f84d32081
+      internalID: -2041282763
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corner_Tiles 1_5
+      name: Corner_5.0_4
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 1000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b85a24042521f41feb56dae53ec1e365
+      internalID: 682204984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corner_5.0_5
       rect:
         serializedVersion: 2
         x: 0
-        y: 1.333313
-        width: 666.6667
-        height: 666.6667
+        y: 0
+        width: 1000
+        height: 1000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8af8c28af04b4473a6f5518074b3439
-      internalID: 2041061721
+      spriteID: 2db3c490ce41c4585b75166eb72ca2b4
+      internalID: 1930315780
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corner_Tiles 1_6
+      name: Corner_5.0_6
       rect:
         serializedVersion: 2
-        x: 666
-        y: 1.333313
-        width: 666.6667
-        height: 666.6667
+        x: 1000
+        y: 0
+        width: 1000
+        height: 1000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,29 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7086b0c95f812457abf6a379cf18cff3
-      internalID: -972678656
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Corner_Tiles 1_7
-      rect:
-        serializedVersion: 2
-        x: 1332
-        y: 1.333313
-        width: 666.6667
-        height: 666.6667
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1a6882c757ea34a7688454755fb4d979
-      internalID: -55969389
+      spriteID: e2b97b939c80e4c939a24446661d2569
+      internalID: 372342630
       vertices: []
       indices: 
       edges: []
@@ -288,14 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Corner_Tiles 1_0: -507569765
-      Corner_Tiles 1_1: 175825513
-      Corner_Tiles 1_2: 306338995
-      Corner_Tiles 1_3: -1723023632
-      Corner_Tiles 1_4: 567836593
-      Corner_Tiles 1_5: 2041061721
-      Corner_Tiles 1_6: -972678656
-      Corner_Tiles 1_7: -55969389
+      Corner_5.0_0: -1397170360
+      Corner_5.0_1: -2076395443
+      Corner_5.0_2: 1450744840
+      Corner_5.0_3: -2041282763
+      Corner_5.0_4: 682204984
+      Corner_5.0_5: 1930315780
+      Corner_5.0_6: 372342630
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
