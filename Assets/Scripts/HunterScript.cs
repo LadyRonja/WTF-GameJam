@@ -27,8 +27,8 @@ public class HunterScript : MonoBehaviour
     public bool upsideDown;
     public bool grounded;
 
-    HunterState state = HunterState.Idle;
-    HunterState lastState = HunterState.Idle;
+    HunterState state = HunterState.Run;
+    HunterState lastState = HunterState.Run;
 
     void Start()
     {
@@ -41,6 +41,11 @@ public class HunterScript : MonoBehaviour
     void Update()
     {
         GroundCheck();
+        MovementManager();
+    }
+
+    private void MovementManager()
+    {
         if (grounded)
             state = HunterState.Run;
         Vector2 direction = target.position - transform.position;
@@ -60,33 +65,33 @@ public class HunterScript : MonoBehaviour
         }
         if (movingRight != movingRightLastFrame)
         {
-            spriteRenderer.flipX = !movingRight;            
+            spriteRenderer.flipX = !movingRight;
         }
         movingRightLastFrame = movingRight;
-        
+
         checkPosTimer += Time.deltaTime;
 
-        //transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         Vector2 move = rb2D.velocity;
         move.x = direction.normalized.x * speed;
         rb2D.velocity = move;
         if (checkPosTimer >= 0.5)
-        {        
-            if(math.abs(rb2D.position.x - target.position.x) <= 1f)
+        {
+            if (math.abs(rb2D.position.x - target.position.x) <= 1f)
                 GravityFlip(direction);
-            
+
             RaycastHit2D wallInfo = Physics2D.Raycast(rb2D.position, rayDirection, (col.bounds.size.x + 0.2f));
             Debug.DrawRay(rb2D.position, Vector2.right, Color.red, 0.2f);
             if (wallInfo == true)
             {
-                if (!wallInfo.collider.CompareTag("Player"))           
-                    GravityFlip(direction); 
+                if (!wallInfo.collider.CompareTag("Player"))
+                    GravityFlip(direction);
                 else
                     rb2D.AddForce(direction * 15f, ForceMode2D.Impulse);
-            }            
+            }
             checkPosTimer = 0;
         }
     }
+
     private void GravityFlip(Vector2 dir)
     {
         state = HunterState.Jump;
