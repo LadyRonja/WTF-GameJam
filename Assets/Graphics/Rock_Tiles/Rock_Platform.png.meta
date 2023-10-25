@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16697d2c258914ba2b5a3c3ee0a28ff3
-      internalID: -58166397
+      spriteID: 8505c0f6ce9ec4cc2a7b8b7dcff721a5
+      internalID: 668021778
       vertices: []
       indices: 
       edges: []
@@ -135,9 +135,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 666
-        y: 667.3333
-        width: 666.6667
-        height: 666.6667
+        y: 667
+        width: 667
+        height: 667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4234431675bfc4292a9291bc2e68ec8f
-      internalID: -395654749
+      spriteID: 8a1c8c57201c040df8f345e3bf0e5137
+      internalID: 1963097938
       vertices: []
       indices: 
       edges: []
@@ -166,71 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d878776ab0fd44d89ae229d721fd93f4
-      internalID: -2004195867
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rock_Platform_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1.333313
-        width: 666.6667
-        height: 666.6667
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d3d5f6452d6a43d4a7925a9959dbc20
-      internalID: -583153549
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rock_Platform_4
-      rect:
-        serializedVersion: 2
-        x: 666
-        y: 1.333313
-        width: 666.6667
-        height: 666.6667
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8c07fc0c13056450682fbff890370fff
-      internalID: 668956398
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rock_Platform_5
-      rect:
-        serializedVersion: 2
-        x: 1332
-        y: 1.333313
-        width: 666.6667
-        height: 666.6667
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d4087d758e1bb4525b53e294bf18c506
-      internalID: -1823791709
+      spriteID: f4fb2d983ad794f56b85254bd60413ec
+      internalID: -1191893133
       vertices: []
       indices: 
       edges: []
@@ -246,12 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Rock_Platform_0: -58166397
-      Rock_Platform_1: -395654749
-      Rock_Platform_2: -2004195867
-      Rock_Platform_3: -583153549
-      Rock_Platform_4: 668956398
-      Rock_Platform_5: -1823791709
+      Rock_Platform_0: 668021778
+      Rock_Platform_1: 1963097938
+      Rock_Platform_2: -1191893133
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
