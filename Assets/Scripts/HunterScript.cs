@@ -14,12 +14,15 @@ public enum HunterState
 public class HunterScript : MonoBehaviour
 {
     public float speed;
-    public Transform target;
+    public Transform target;    
     public SpriteRenderer spriteRenderer; 
     Collider2D col;
     Rigidbody2D rb2D;
     
-    Vector2 rayDirection;    
+    Vector2 rayDirection;
+    Vector2 teleportPosition;
+
+    float teleportTimer;
 
     public float checkPosTimer;       
     public bool movingRight = true;
@@ -40,6 +43,12 @@ public class HunterScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        teleportTimer += Time.deltaTime;
+        if (math.abs(FastMath.Distance(transform.position, target.position)) > 20 && teleportTimer > 8)
+        {
+            teleportPosition = new Vector2(Camera.main.transform.position.x - 15, target.position.y);
+            transform.position = teleportPosition;
+        }
         GroundCheck();
         MovementManager();
     }
@@ -117,6 +126,6 @@ public class HunterScript : MonoBehaviour
             Debug.DrawLine(centerPos, hit.point, Color.red, 0.1f);
 
         if (hit)        
-            grounded = true;       
+            grounded = true;        
     }
 }
