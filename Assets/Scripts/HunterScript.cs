@@ -11,6 +11,9 @@ public class HunterScript : MonoBehaviour
 {
     public float speed;
     public Transform target;
+    public Transform[] teleportPoints;
+    public int teleportPointsCount;
+    public float doNotTeleportAfterJumpTimer;
     public GameObject hunterAnimation;
     public SkeletonAnimation skeletonAnimation;
     public HunterAnimationHandler hunterAnimationHandler;
@@ -42,9 +45,10 @@ public class HunterScript : MonoBehaviour
     {
         hunterAnimationHandler.SetCharacterState(hunterAnimationHandler.currentState);
         teleportTimer += Time.deltaTime;
-        if (math.abs(FastMath.Distance(transform.position, target.position)) > 20 && teleportTimer > 8)
+        doNotTeleportAfterJumpTimer += Time.deltaTime;
+        if (math.abs(FastMath.Distance(transform.position, target.position)) > 20 && teleportTimer > 12)
         {
-            teleportPosition = new Vector2(Camera.main.transform.position.x - 15, target.position.y);
+            teleportPosition = new Vector2(teleportPoints[teleportPointsCount].position.x, teleportPoints[teleportPointsCount].position.y);
             transform.position = teleportPosition;
         }
         GroundCheck();
@@ -117,7 +121,8 @@ public class HunterScript : MonoBehaviour
     }
 
     private void GravityFlip(Vector2 dir)
-    {        
+    {
+        doNotTeleportAfterJumpTimer = 0;
         rb2D.gravityScale *= -1;        
         upsideDown = !upsideDown;
         Vector3 turnUpsideDown = new Vector3(hunterAnimation.transform.localScale.x,
@@ -126,7 +131,7 @@ public class HunterScript : MonoBehaviour
         Vector3 turnUpsideDownPosition = new Vector3(hunterAnimation.transform.localPosition.x,
                 hunterAnimation.transform.localPosition.y * -1, hunterAnimation.transform.localPosition.z);
         hunterAnimation.transform.localPosition = turnUpsideDownPosition;
-        rb2D.AddForce(dir.normalized * 15f, ForceMode2D.Impulse);  
+        rb2D.AddForce(dir.normalized * 10f, ForceMode2D.Impulse);  
     }
     private void OnCollisionEnter2D(Collision2D other)
     {       
@@ -147,5 +152,20 @@ public class HunterScript : MonoBehaviour
         if (hit)        
             grounded = true;        
     }
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision == this)
+            return;
+        if(doNotTeleportAfterJumpTimer > 5)
+        {
+            teleportPointsCount++;
+            teleportPosition = new Vector2(teleportPoints[teleportPointsCount].position.x, teleportPoints[teleportPointsCount].position.y);
+            transform.position = teleportPosition;
+            teleportTimer = 6;
+            if (teleportPointsCount >= 7)
+                teleportPointsCount = 0;
+        }
+        
+    }
+
 }
