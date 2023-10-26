@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Monster gamejam_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: cbcbe0ace2740434498b198bce205259, type: 2}
+  - {fileID: 11400000, guid: 578336c442e54bc469d06dd33d5d11b6, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 65884879cbe2d184fad5b7b20f2f9130, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 7cb5b07e50295694bae37e2f5ec558b7, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0

@@ -7,23 +7,20 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public enum HunterState
-{    
-    Run,
-    Jump,
-    Digging,
-}
 public class HunterScript : MonoBehaviour
 {
     public float speed;
     public Transform target;
     public GameObject hunterAnimation;
     public SkeletonAnimation skeletonAnimation;
+    public HunterAnimationHandler hunterAnimationHandler;
+
     Collider2D col;
     Rigidbody2D rb2D;
     
     Vector2 rayDirection;
     Vector2 teleportPosition;
+    Vector2 direction; 
 
     float teleportTimer;
 
@@ -31,21 +28,19 @@ public class HunterScript : MonoBehaviour
     public bool movingRight = true;
     public bool movingRightLastFrame = true;
     public bool upsideDown;
-    public bool grounded;
-
-    HunterState state = HunterState.Run;
-    HunterState lastState = HunterState.Run;
+    public bool grounded;     
 
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>(); 
         skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
+        hunterAnimationHandler = GetComponentInChildren<HunterAnimationHandler>();        
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
+        hunterAnimationHandler.SetCharacterState(hunterAnimationHandler.currentState);
         teleportTimer += Time.deltaTime;
         if (math.abs(FastMath.Distance(transform.position, target.position)) > 20 && teleportTimer > 8)
         {
@@ -53,23 +48,25 @@ public class HunterScript : MonoBehaviour
             transform.position = teleportPosition;
         }
         GroundCheck();
-        MovementManager();
+        MovementManager();        
     }
-
-    private void MovementManager()
+    IEnumerator YealdJump()
     {
+        yield return new WaitForSeconds(0.3f);
+        GravityFlip(direction);
+    }
+    private void MovementManager()
+    {        
         if (grounded)
-            state = HunterState.Run;
-        Vector2 direction = target.position - transform.position;
+            hunterAnimationHandler.currentState = "Run";
+            direction = target.position - transform.position;
         if (upsideDown)
         {
-            speed = 7;
-            skeletonAnimation.timeScale = 2;
+            speed = 7;            
         }
         else
         {
-            speed = 3;
-            skeletonAnimation.timeScale = 1;
+            speed = 3;            
         }
         if (direction.x < 0)
         {
@@ -96,25 +93,31 @@ public class HunterScript : MonoBehaviour
         rb2D.velocity = move;
         if (checkPosTimer >= 0.5)
         {
+            checkPosTimer = 0;
             if (math.abs(rb2D.position.x - target.position.x) <= 1f)
-                GravityFlip(direction);
+            {
+                checkPosTimer = -1;
+                hunterAnimationHandler.currentState = "Jump";
+                StartCoroutine(YealdJump());
+            }
 
-            RaycastHit2D wallInfo = Physics2D.Raycast(rb2D.position, rayDirection, (col.bounds.size.x + 0.2f));
+            RaycastHit2D wallInfo = Physics2D.Raycast(rb2D.position, rayDirection, (col.bounds.size.x + 2.5f));
             Debug.DrawRay(rb2D.position, Vector2.right, Color.red, 0.2f);
             if (wallInfo == true)
             {
                 if (!wallInfo.collider.CompareTag("Player"))
-                    GravityFlip(direction);
-                else
-                    rb2D.AddForce(direction * 15f, ForceMode2D.Impulse);
+                {
+                    checkPosTimer = -1;
+                    hunterAnimationHandler.currentState = "Jump";
+                    StartCoroutine(YealdJump()); 
+                }
             }
-            checkPosTimer = 0;
+            
         }
     }
 
     private void GravityFlip(Vector2 dir)
-    {
-        state = HunterState.Jump;
+    {        
         rb2D.gravityScale *= -1;        
         upsideDown = !upsideDown;
         Vector3 turnUpsideDown = new Vector3(hunterAnimation.transform.localScale.x,
@@ -144,4 +147,5 @@ public class HunterScript : MonoBehaviour
         if (hit)        
             grounded = true;        
     }
+    
 }

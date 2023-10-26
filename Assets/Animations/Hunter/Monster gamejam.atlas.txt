@@ -1,51 +1,45 @@
 Monster gamejam.png
-size:3447,2415
+size:3340,2191
 filter:Linear,Linear
 pma:true
 B_Arm_1 Copy
-bounds:2903,1947,542,466
+bounds:2644,7,542,466
 B_Arm_2 Copy
-bounds:2841,825,589,574
+bounds:2134,847,589,574
 B_Arm_3 Copy
-bounds:801,594,200,630
+bounds:2708,585,200,630
 rotate:90
 B_Arm_4 Copy
-bounds:3047,9,85,340
-B_Arm_Drip Copy
-bounds:1531,791,701,703
+bounds:3246,1849,85,340
 Back_1 Copy
-bounds:2234,563,572,370
+bounds:2134,475,572,370
 Back_2 Copy
-bounds:1548,371,546,418
+bounds:2096,55,546,418
 Back_3 Copy
-bounds:2808,351,613,472
+bounds:2725,787,613,472
 Back_4 Copy
-bounds:2903,1401,544,518
-rotate:90
+bounds:801,2,544,518
 Body Copy
-bounds:2,1496,2116,917
+bounds:2,1272,2116,917
 F_Arm_1 Copy
-bounds:1548,28,928,341
+bounds:2903,1261,928,341
+rotate:90
 F_Arm_2 Copy
-bounds:2,5,724,748
-rotate:90
+bounds:801,522,724,748
 F_Arm_3 Copy
-bounds:752,50,108,628
+bounds:2708,475,108,628
 rotate:90
-F_Arm_Drip Copy
-bounds:801,796,728,698
 Mouth_Inside Copy
-bounds:2478,2,347,567
+bounds:1527,211,347,567
 rotate:90
 Teeth_Drip
-bounds:2096,392,169,506
-rotate:90
+bounds:1347,14,169,506
 Teeth_Lower_B Copy
-bounds:752,160,794,432
+bounds:2,73,794,432
 Teeth_Lower_F Copy
-bounds:2234,935,710,605
+bounds:1527,560,710,605
 rotate:90
 Teeth_Upper_B Copy
-bounds:2,731,797,763
+bounds:2,507,797,763
 Teeth_Upper_F Copy
-bounds:2120,1647,781,766
+bounds:2120,1423,781,766

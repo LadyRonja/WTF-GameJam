@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3249512423127622005}
   - component: {fileID: 8871061203885693628}
   - component: {fileID: 1664239615840234627}
+  - component: {fileID: 2613294709179819925}
   m_Layer: 0
   m_Name: Spine GameObject (Monster gamejam)
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b700e7472aa36f4fbead33f341a8644, type: 2}
+  - {fileID: 2100000, guid: 44d1000db1a4f0a4b8bc24ba6e9682b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: d5b99fd466bc276458ee4fda7f973b8e, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 18a3f24d0e59b384e92f9a25555938eb, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -124,6 +125,24 @@ MonoBehaviour:
   _animationName: Run
   loop: 1
   timeScale: 1
+--- !u!114 &2613294709179819925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378752211724022576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54d49b4ae82b2c499c0e26429df7dcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Run: {fileID: 11400000, guid: 5e68defcec1142747a04fdf072742411, type: 2}
+  Jump: {fileID: 11400000, guid: 37ed5158eb2c5ca4bb841d4c417dc43a, type: 2}
+  skeletonAnimation: {fileID: 1664239615840234627}
+  hunterScript: {fileID: 7639777870987271968}
+  currentState: 
+  currentAnimation: 
 --- !u!1 &2412010896538768776
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +221,8 @@ MonoBehaviour:
   speed: 3
   target: {fileID: 0}
   hunterAnimation: {fileID: 1378752211724022576}
+  skeletonAnimation: {fileID: 1664239615840234627}
+  hunterAnimationHandler: {fileID: 2613294709179819925}
   checkPosTimer: 0
   movingRight: 0
   movingRightLastFrame: 1
@@ -313,7 +334,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1403600343
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 36f3887fa7567864392f17f922aae29f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
