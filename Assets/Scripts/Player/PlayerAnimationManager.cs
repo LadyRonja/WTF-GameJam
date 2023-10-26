@@ -7,18 +7,11 @@ public class PlayerAnimationManager : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] SpriteRenderer spriteRenderer;
-    private static int Idle;// = Animator.StringToHash("temp_p_idle");
-    private static int Run;// = Animator.StringToHash("temp_p_walk");
-    private static int Jump;// = Animator.StringToHash("temp_p_jump");
-    private static int Fall;// = Animator.StringToHash("temp_p_fall");
+    private static readonly int Idle = Animator.StringToHash("p_idle");
+    private static readonly int Run = Animator.StringToHash("temp_p_walk");
+    private static readonly int Jump = Animator.StringToHash("temp_p_jump");
+    private static readonly int Fall = Animator.StringToHash("temp_p_fall");
 
-    private void Awake()
-    {
-        Idle = Animator.StringToHash("temp_p_idle");
-        Run = Animator.StringToHash("temp_p_walk");
-        Jump = Animator.StringToHash("temp_p_jump");
-        Fall = Animator.StringToHash("temp_p_fall");
-    }
 
     public void SetAnimation(PlayerState state)
     {

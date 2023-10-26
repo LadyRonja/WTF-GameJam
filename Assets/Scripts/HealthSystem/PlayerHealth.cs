@@ -5,15 +5,20 @@ using UnityEngine;
 
 public class PlayerHealth : Health
 {
+    bool dead = false;
+
     public override void Die()
     {
+        if (dead)
+            return;
+
+        dead = true;
         GetComponent<PlayerMovement>().enabled = false;
         GetComponent<PlayerArtifactHandler>().enabled = false;
         GetComponent<SpriteRenderer>().color = Color.red;
         Destroy(GetComponent<Rigidbody2D>());
-        
 
-        // TODO:
-        // implement Respawn or Game over screen
+        if (GameOverManager.Instance != null)
+            GameOverManager.Instance.GameIsOver();
     }
 }
