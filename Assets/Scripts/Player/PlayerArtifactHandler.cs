@@ -16,6 +16,8 @@ public class PlayerArtifactHandler : MonoBehaviour
     [SerializeField] float pickUpCooldown = 1f;
     float pickUpTimer;
 
+    public bool IsCarryingArtifact { get => isCarrying; }
+
     private void Update()
     {
         if (artifact == null)

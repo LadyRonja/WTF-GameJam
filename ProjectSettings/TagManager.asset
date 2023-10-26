@@ -47,6 +47,9 @@ TagManager:
   - name: Middleground
     uniqueID: 1373631277
     locked: 0
+  - name: Doors
+    uniqueID: 1726195747
+    locked: 0
   - name: Player
     uniqueID: 1279677411
     locked: 0
