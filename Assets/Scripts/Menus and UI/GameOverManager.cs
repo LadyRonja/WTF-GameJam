@@ -57,18 +57,46 @@ public class GameOverManager : MonoBehaviour
         instructionsRetryText.gameObject.SetActive(false);
         instructionsQuitText.gameObject.SetActive(false);
 
-        StartCoroutine(Appear(0, fade.gameObject));
-        StartCoroutine(Appear(0f, gameOverText.gameObject));
-        StartCoroutine(Appear(1f, retryText.gameObject));
-        StartCoroutine(Appear(2.5f, instructionsRetryText.gameObject));
-        StartCoroutine(Appear(2.5f, instructionsQuitText.gameObject));
+        StartCoroutine(FadeInOverTime(fade, 2, 0));
+        StartCoroutine(FadeInOverTime(gameOverText, 1, 2));
+        StartCoroutine(FadeInOverTime(retryText, 1, 3));
+        StartCoroutine(FadeInOverTime(instructionsRetryText, 1, 4));
+        StartCoroutine(FadeInOverTime(instructionsQuitText, 1, 4));
     }
 
-    private IEnumerator Appear(float delay, GameObject gameObject)
+    IEnumerator FadeInOverTime(TMP_Text text, float duration, float delay)
     {
         yield return new WaitForSeconds(delay);
-        gameObject.SetActive(true);
-        
-        yield return null;
+        text.gameObject.SetActive(true);
+        Color fadeStart = text.color;
+        Color fadeEnd = text.color;
+        fadeStart.a = 0f;
+        text.color = fadeStart;
+
+        for (float t = 0f; t < duration; t += Time.deltaTime)
+        {
+            float normalizedTime = t / duration;
+            text.color = Color.Lerp(fadeStart, fadeEnd, normalizedTime);
+            yield return null;
+        }
+        text.color = fadeEnd;
+    }
+
+    IEnumerator FadeInOverTime(Image image, float duration, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        image.gameObject.SetActive(true);
+        Color fadeStart = image.color;
+        Color fadeEnd = fadeStart;
+        fadeStart.a = 0f;
+        image.color = fadeStart;
+
+        for (float t = 0f; t < duration; t += Time.deltaTime)
+        {
+            float normalizedTime = t / duration;
+            image.color = Color.Lerp(fadeStart, fadeEnd, normalizedTime);
+            yield return null;
+        }
+        image.color = fadeEnd;
     }
 }
