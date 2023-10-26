@@ -1443,6 +1443,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hunter
       objectReference: {fileID: 0}
+    - target: {fileID: 3249512423127622005, guid: 112a5b47808493b479f45c5e5b6f13fd, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6765299251697564054, guid: 112a5b47808493b479f45c5e5b6f13fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.2
@@ -1492,7 +1496,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1840208121}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5700455973468045149, guid: 112a5b47808493b479f45c5e5b6f13fd, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 112a5b47808493b479f45c5e5b6f13fd, type: 3}

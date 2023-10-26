@@ -1,9 +1,11 @@
+using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public enum HunterState
 {    
@@ -14,8 +16,9 @@ public enum HunterState
 public class HunterScript : MonoBehaviour
 {
     public float speed;
-    public Transform target;    
-    public SpriteRenderer spriteRenderer; 
+    public Transform target;
+    public GameObject hunterAnimation;
+    public SkeletonAnimation skeletonAnimation;
     Collider2D col;
     Rigidbody2D rb2D;
     
@@ -36,8 +39,8 @@ public class HunterScript : MonoBehaviour
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        col = GetComponent<Collider2D>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        col = GetComponent<Collider2D>(); 
+        skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
     }
 
     // Update is called once per frame
@@ -59,9 +62,15 @@ public class HunterScript : MonoBehaviour
             state = HunterState.Run;
         Vector2 direction = target.position - transform.position;
         if (upsideDown)
+        {
             speed = 7;
+            skeletonAnimation.timeScale = 2;
+        }
         else
+        {
             speed = 3;
+            skeletonAnimation.timeScale = 1;
+        }
         if (direction.x < 0)
         {
             movingRight = false;
@@ -74,7 +83,9 @@ public class HunterScript : MonoBehaviour
         }
         if (movingRight != movingRightLastFrame)
         {
-            spriteRenderer.flipX = !movingRight;
+            Vector3 turnAround = new Vector3(hunterAnimation.transform.localScale.x * -1, 
+                hunterAnimation.transform.localScale.y, hunterAnimation.transform.localScale.z);
+            hunterAnimation.transform.localScale = turnAround;
         }
         movingRightLastFrame = movingRight;
 
@@ -106,14 +117,19 @@ public class HunterScript : MonoBehaviour
         state = HunterState.Jump;
         rb2D.gravityScale *= -1;        
         upsideDown = !upsideDown;
-        spriteRenderer.flipY = upsideDown;        
+        Vector3 turnUpsideDown = new Vector3(hunterAnimation.transform.localScale.x,
+                hunterAnimation.transform.localScale.y * -1, hunterAnimation.transform.localScale.z);
+        hunterAnimation.transform.localScale = turnUpsideDown;
+        Vector3 turnUpsideDownPosition = new Vector3(hunterAnimation.transform.localPosition.x,
+                hunterAnimation.transform.localPosition.y * -1, hunterAnimation.transform.localPosition.z);
+        hunterAnimation.transform.localPosition = turnUpsideDownPosition;
         rb2D.AddForce(dir.normalized * 15f, ForceMode2D.Impulse);  
     }
     private void OnCollisionEnter2D(Collision2D other)
     {       
         if (other.gameObject.TryGetComponent<IDamagable>(out IDamagable damagable))
         {           
-                damagable.Die();            
+            damagable.Die();            
         }        
     }  
     private void GroundCheck()
