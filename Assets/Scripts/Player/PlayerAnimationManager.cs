@@ -9,7 +9,7 @@ public class PlayerAnimationManager : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     private static readonly int Idle = Animator.StringToHash("p_idle");
     private static readonly int Run = Animator.StringToHash("p_walk");
-    private static readonly int Jump = Animator.StringToHash("temp_p_jump");
+    private static readonly int Jump = Animator.StringToHash("p_jump");
     private static readonly int Fall = Animator.StringToHash("temp_p_fall");
 
 
