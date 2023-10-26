@@ -16,7 +16,20 @@ public class PlayerArtifactHandler : MonoBehaviour
     [SerializeField] float pickUpCooldown = 1f;
     float pickUpTimer;
 
+    [Header("Move slower with artifact")]
+    public bool moveSlowerWithArtifact = false;
+    [Tooltip("Is a percentage")]
+    [Range(0f, 1f)] public float moveSpeedReduction;
+    float savedMoveSpeedGround = 0;
+    float savedMoveSpeedAir = 0;
+    PlayerMovement player;
+
     public bool IsCarryingArtifact { get => isCarrying; }
+
+    private void Start()
+    {
+        player = GetComponent<PlayerMovement>();
+    }
 
     private void Update()
     {
@@ -66,6 +79,12 @@ public class PlayerArtifactHandler : MonoBehaviour
             isCarrying = false;
             artifact.rb.gravityScale = 1;
             artifact.Throw(direction, throwSpeed);
+
+            if (moveSlowerWithArtifact)
+            {
+                player.airSpeedMax = savedMoveSpeedAir;
+                player.groundSpeedMax = savedMoveSpeedGround;
+            }
         }
     }
 
@@ -75,13 +94,20 @@ public class PlayerArtifactHandler : MonoBehaviour
         { 
             pickUpTimer -= Time.deltaTime;
             if (pickUpTimer > 0) return;
-
             Vector2 dist = artifact.transform.position - transform.position;
             if (Mathf.Abs(dist.sqrMagnitude) < pickupRadius * pickupRadius)
             {
                 isCarrying = true;
                 artifact.damageOnHit = false;
                 artifact.rb.gravityScale = 0;
+
+                if (moveSlowerWithArtifact)
+                {
+                    savedMoveSpeedGround = player.groundSpeedMax;
+                    savedMoveSpeedAir = player.airSpeedMax;
+                    player.groundSpeedMax *= moveSpeedReduction;
+                    player.airSpeedMax *= moveSpeedReduction;
+                }
 
                 if (CameraController.Instance.state != CameraStates.LookAhead)
                     CameraController.Instance.state = CameraStates.LookAhead;
