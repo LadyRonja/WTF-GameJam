@@ -44,7 +44,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.6775098, g: 0.689191, b: 0.7075472, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   maxLookAhead: 3
   smoothTime: 0.5
   xOffSet: 0
-  yOffSet: 1.5
+  yOffSet: 0.7
   additiveShake: 1
   prioritizeLargeShake: 1
   shakeStabalizer: 5
