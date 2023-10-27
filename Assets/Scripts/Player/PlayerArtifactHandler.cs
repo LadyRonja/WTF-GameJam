@@ -22,6 +22,7 @@ public class PlayerArtifactHandler : MonoBehaviour
     [Range(0f, 1f)] public float moveSpeedReduction;
     float savedMoveSpeedGround = 0;
     float savedMoveSpeedAir = 0;
+    [SerializeField] GameObject heavyText;
     PlayerMovement player;
 
     public bool IsCarryingArtifact { get => isCarrying; }
@@ -29,6 +30,7 @@ public class PlayerArtifactHandler : MonoBehaviour
     private void Start()
     {
         player = GetComponent<PlayerMovement>();
+        heavyText.SetActive(false);
     }
 
     private void Update()
@@ -84,6 +86,7 @@ public class PlayerArtifactHandler : MonoBehaviour
             {
                 player.airSpeedMax = savedMoveSpeedAir;
                 player.groundSpeedMax = savedMoveSpeedGround;
+                heavyText.SetActive(false);
             }
         }
     }
@@ -107,6 +110,7 @@ public class PlayerArtifactHandler : MonoBehaviour
                     savedMoveSpeedAir = player.airSpeedMax;
                     player.groundSpeedMax *= moveSpeedReduction;
                     player.airSpeedMax *= moveSpeedReduction;
+                    heavyText.SetActive(true);
                 }
 
                 if (CameraController.Instance.state != CameraStates.LookAhead)

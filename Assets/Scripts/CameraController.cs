@@ -72,20 +72,6 @@ public class CameraController : MonoBehaviour
         {
             GameSettings.usingGamepad = !GameSettings.usingGamepad;
         }
-
-        #region Debug
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            ShakeScreen(debugShakeAmount);
-        }
-
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetMouseButtonDown((int)MouseButton.Left))
-        {
-            Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - objectToFollow.position;
-            ShakeScreen(debugShakeAmount, direction.normalized);
-            FreezeGame(debugFreezeAmount);
-        }
-        #endregion 
     }
 
     private void FixedUpdate()

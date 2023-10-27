@@ -4,5 +4,5 @@ using UnityEngine;
 
 public static class GameSettings
 {
-    public static bool usingGamepad = true;
+    public static bool usingGamepad = false;
 }

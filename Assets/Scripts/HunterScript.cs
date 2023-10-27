@@ -46,7 +46,7 @@ public class HunterScript : MonoBehaviour
         hunterAnimationHandler.SetCharacterState(hunterAnimationHandler.currentState);
         teleportTimer += Time.deltaTime;
         doNotTeleportAfterJumpTimer += Time.deltaTime;
-        if (math.abs(FastMath.Distance(transform.position, target.position)) > 20 && teleportTimer > 12)
+        if (math.abs(FastMath.Distance(transform.position, target.position)) > 30 && teleportTimer > 12)
         {
             teleportPosition = new Vector2(teleportPoints[teleportPointsCount].position.x, teleportPoints[teleportPointsCount].position.y);
             transform.position = teleportPosition;
