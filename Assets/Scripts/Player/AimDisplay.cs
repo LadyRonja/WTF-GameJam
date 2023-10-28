@@ -10,7 +10,7 @@ public class AimDisplay : MonoBehaviour
 
     private void Update()
     {
-        if (GameSettings.usingGamepad)
+        if (GameInputSettings.Instance.usingGamepad)
         {
             float x = Input.GetAxis("HorAimController");
             float y = Input.GetAxis("VerAimController");

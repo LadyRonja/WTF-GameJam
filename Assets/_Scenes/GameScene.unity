@@ -3241,6 +3241,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3934927334381152251, guid: 459cee27cb673b640a7fa28b80177bfa, type: 3}
   m_PrefabInstance: {fileID: 1061801783}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1071234163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1071234165}
+  - component: {fileID: 1071234164}
+  m_Layer: 0
+  m_Name: GameSettingInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1071234164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071234163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c938391a1b5d804ca317c79a1f95953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usingGamepad: 0
+--- !u!4 &1071234165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071234163}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.34465382, y: 0.06504049, z: -9.938983}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1091694504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6494,6 +6539,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7639777870987271968, guid: 112a5b47808493b479f45c5e5b6f13fd, type: 3}
+      propertyPath: speed
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639777870987271968, guid: 112a5b47808493b479f45c5e5b6f13fd, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1840208118}
@@ -7565,6 +7614,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1840208122}
     - target: {fileID: 4478652344419996636, guid: be28d9c144fa1614dbc0e8d3cdaea58a, type: 3}
+      propertyPath: yOffSet
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478652344419996636, guid: be28d9c144fa1614dbc0e8d3cdaea58a, type: 3}
       propertyPath: objectToFollow
       value: 
       objectReference: {fileID: 1840208118}
@@ -7689,3 +7742,4 @@ SceneRoots:
   - {fileID: 703191259}
   - {fileID: 1860246594}
   - {fileID: 866251762}
+  - {fileID: 1071234165}

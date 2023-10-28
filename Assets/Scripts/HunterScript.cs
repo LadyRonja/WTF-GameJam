@@ -9,7 +9,10 @@ using UnityEngine.UIElements;
 
 public class HunterScript : MonoBehaviour
 {
-    public float speed;
+    public float groundSpeed = 2.2f;
+    public float ceilingSpeed = 6f;
+    public float teleportdistance = 23f;
+    private float speed;
     public Transform target;
     public Transform[] teleportPoints;
     public int teleportPointsCount;
@@ -38,7 +41,9 @@ public class HunterScript : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>(); 
         skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
-        hunterAnimationHandler = GetComponentInChildren<HunterAnimationHandler>();        
+        hunterAnimationHandler = GetComponentInChildren<HunterAnimationHandler>();
+
+        speed = groundSpeed;
     }
     
     void Update()
@@ -46,7 +51,7 @@ public class HunterScript : MonoBehaviour
         hunterAnimationHandler.SetCharacterState(hunterAnimationHandler.currentState);
         teleportTimer += Time.deltaTime;
         doNotTeleportAfterJumpTimer += Time.deltaTime;
-        if (math.abs(FastMath.Distance(transform.position, target.position)) > 30 && teleportTimer > 12)
+        if (math.abs(FastMath.Distance(transform.position, target.position)) > teleportdistance && teleportTimer > 12)
         {
             teleportPosition = new Vector2(teleportPoints[teleportPointsCount].position.x, teleportPoints[teleportPointsCount].position.y);
             transform.position = teleportPosition;
@@ -66,11 +71,11 @@ public class HunterScript : MonoBehaviour
             direction = target.position - transform.position;
         if (upsideDown)
         {
-            speed = 7;            
+            speed = ceilingSpeed;            
         }
         else
         {
-            speed = 3;            
+            speed = groundSpeed;            
         }
         if (direction.x < 0)
         {

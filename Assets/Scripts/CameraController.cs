@@ -20,8 +20,6 @@ public class CameraController : MonoBehaviour
     public static CameraController Instance;
     [SerializeField] private Camera cam;
     public CameraStates state = CameraStates.TrackingSingle;
-    [SerializeField] float debugShakeAmount = 2f;
-    [SerializeField] float debugFreezeAmount = 0.1f;
     Vector3 positionToCenter;
 
     [Header("Single object Tracking")]
@@ -64,14 +62,6 @@ public class CameraController : MonoBehaviour
 
         if(cam == null)
             cam = Camera.main;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            GameSettings.usingGamepad = !GameSettings.usingGamepad;
-        }
     }
 
     private void FixedUpdate()
@@ -133,22 +123,24 @@ public class CameraController : MonoBehaviour
     {
         Vector2 dir = Vector2.zero;
 
-        if (GameSettings.usingGamepad)
+        if (GameInputSettings.Instance.usingGamepad)
         {
             dir.x = Input.GetAxis("HorAimController");
             dir.y = Input.GetAxis("VerAimController");
 
             if (dir == Vector2.zero)
-            {
-                if (player.rb != null)
-                    dir.x = player.rb.velocity.x / (player.groundSpeedMax / 2f);
-            }
+                GetPlayerHorVelocity();
 
         }
         else 
         {
-            dir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.transform.position);
-            dir.Normalize();
+            if (Input.GetMouseButton((int)MouseButton.Right))
+            {
+                dir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.transform.position);
+                dir.Normalize();
+            }
+            else
+                dir.x = GetPlayerHorVelocity();
         }
 
         positionToCenter.x = player.transform.position.x;
@@ -159,8 +151,23 @@ public class CameraController : MonoBehaviour
             positionToCenter.y + dir.y * maxLookAhead + yOffSet,
             cam.transform.position.z);
 
+        Vector2 boundsMax = new Vector2(objectToFollow.position.x + Width /2 - 0.5f, objectToFollow.position.y + Height / 2 -0.5f);
+        Vector2 boundsMin = new Vector2(objectToFollow.position.x - Width /2 + 0.5f, objectToFollow.position.y - Height / 2 + 0.5f);
+        Vector3 camPos = cam.transform.position;
+        Vector3 campPosUnClamped = camPos;
+        camPos.x = Mathf.Clamp(camPos.x, boundsMin.x, boundsMax.x);
+        camPos.y = Mathf.Clamp(camPos.y, boundsMin.y, boundsMax.y);
+        cam.transform.position = camPos;
 
+        if(campPosUnClamped == camPos)
             cam.transform.position = Vector3.SmoothDamp(cam.transform.position, positionToCenter, ref velocity, smoothTime);
+
+        float GetPlayerHorVelocity()
+        {
+            if (player.rb != null)
+                return player.rb.velocity.x / (player.groundSpeedMax / 2f);
+            else return 0f;
+        }
     }
 
     private void SetCameraPosition()

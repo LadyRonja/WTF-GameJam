@@ -701,6 +701,62 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &254737577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 254737579}
+  - component: {fileID: 254737578}
+  m_Layer: 0
+  m_Name: TutorialTextManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &254737578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254737577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 651267ace8d57714ba6039d6b34ebfaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveText: {fileID: 1410996995}
+  moveKeyboard: WASD
+  moveGamepad: Left Stick
+  jumpText: {fileID: 914858987}
+  jumpKeyboard: Space
+  jumpGamepad: '''A'' Button'
+  aimText: {fileID: 1930830303}
+  aimKeyboard: Left Mouse Button
+  aimGamepad: Right Stick
+  thorwText: {fileID: 926566259}
+  throwKeyboard: Left Mouse Button
+  throwGamepad: Right Bumper
+--- !u!4 &254737579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254737577}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.34465382, y: 0.06504049, z: -9.938983}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &267386569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,7 +1545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &480651727
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3328,6 +3384,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &974961507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 974961508}
+  - component: {fileID: 974961509}
+  m_Layer: 0
+  m_Name: GameSettings Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &974961508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974961507}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &974961509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974961507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c938391a1b5d804ca317c79a1f95953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usingGamepad: 0
 --- !u!1 &1002046395
 GameObject:
   m_ObjectHideFlags: 0
@@ -5008,9 +5109,9 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontSize: 54.3
-  m_fontSizeBase: 36
+  m_fontSizeBase: 54.3
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 2
@@ -6030,6 +6131,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1566503984}
+    - target: {fileID: 4478652344419996636, guid: be28d9c144fa1614dbc0e8d3cdaea58a, type: 3}
+      propertyPath: yOffSet
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 4478652344419996636, guid: be28d9c144fa1614dbc0e8d3cdaea58a, type: 3}
       propertyPath: objectToFollow
       value: 
@@ -7554,3 +7659,5 @@ SceneRoots:
   - {fileID: 1430764064}
   - {fileID: 451795595}
   - {fileID: 2012721110}
+  - {fileID: 974961508}
+  - {fileID: 254737579}
