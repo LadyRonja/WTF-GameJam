@@ -28,7 +28,7 @@ public class TutorialTextManager : MonoBehaviour
     [SerializeField] string throwKeyboard = "Left Mouse Button";
     [SerializeField] string throwGamepad = "Right Bumper";
 
-    private void Awake()
+    private void Start()
     {
         #region Singleton
         if (Instance == null)

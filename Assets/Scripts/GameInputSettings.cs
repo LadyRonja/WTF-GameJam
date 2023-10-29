@@ -33,6 +33,10 @@ public class GameInputSettings : MonoBehaviour
             if(SceneManager.GetActiveScene().name == "MainMenu")
                 TutorialTextManager.Instance.UpdateTutorialText();
 
+
+            if (SceneManager.GetActiveScene().name == "GameScene")
+                ReplayText.Instance.UpdateInstructionsText();
+
             Debug.Log("Changing input");
         }
 
@@ -51,6 +55,5 @@ public class GameInputSettings : MonoBehaviour
         {
             usingGamepad = true;
         }
-
     }
 }

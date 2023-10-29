@@ -38,10 +38,14 @@ public class GameOverManager : MonoBehaviour
 
         // Don't wanna mess with the input manager again, so not renaming the "Debug Multiplier, which takes the Y-input on an xbox-controller"
         if (Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("Debug Multiplier"))
+        {
             SceneManager.LoadScene("GameScene");
+        }
 
         if (Input.GetKeyDown(KeyCode.Q) || Input.GetButtonDown("Cancel"))
+        {
             SceneManager.LoadScene("MainMenu");
+        }
     }
 
     public void GameIsOver()

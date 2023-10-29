@@ -2020,6 +2020,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1548754263}
+  - {fileID: 1312875907}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &681444080 stripped
@@ -4452,6 +4453,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8919385062677477464, guid: 73e8c8659bd28514b83c8b0404a0daf3, type: 3}
   m_PrefabInstance: {fileID: 1301395027}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1312875906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1312875907}
+  - component: {fileID: 1312875908}
+  m_Layer: 0
+  m_Name: ReplayTextManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1312875907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312875906}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 539.1763, y: 230.79482, z: 2.2609868}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 677100664}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1312875908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312875906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a393857557813741bd8be38700fd261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  victoryText: {fileID: 107050067}
+  victoryQuitKeyboard: '''R'' to return to the Main Menu'
+  victoryQuitGamepad: '''Y'' Button to return to the Main Menu'
+  defeatRetryText: {fileID: 978440780}
+  defeatQuitText: {fileID: 1450892410}
+  defeatKeyboardReplay: '''R'' to return to Replay'
+  defeatKeyboardQuit: '''Q'' to return to the Main Menu'
+  defeatGamepadReplay: '''Y'' Button to return to Replay'
+  defeatGamepadQuit: '''B'' Button to return to the Main Menu'
 --- !u!1001 &1322904135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7391,6 +7445,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 681254282583751119, guid: 440cdf3bcdef00645a788a2a083226fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2104256005408340399, guid: 440cdf3bcdef00645a788a2a083226fa, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -7469,6 +7527,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2104256005408340399, guid: 440cdf3bcdef00645a788a2a083226fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347616042051237889, guid: 440cdf3bcdef00645a788a2a083226fa, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5957700494348881645, guid: 440cdf3bcdef00645a788a2a083226fa, type: 3}
